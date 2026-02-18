@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Snowflake Intelligence Medicare Analyst Architecture</title>
+  <desc id="desc">Data sources flow into Snowflake raw, curated, analytics, semantic, search, agent, and governance layers.</desc>
+
+  <defs>
+    <style>
+      .bg { fill: #f7fafc; }
+      .title { font: 700 28px Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 14px Arial, sans-serif; fill: #334155; }
+      .lane { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 12; }
+      .laneLabel { font: 700 15px Arial, sans-serif; fill: #0f172a; }
+      .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.5; rx: 10; }
+      .boxBlue { fill: #eff6ff; stroke: #3b82f6; stroke-width: 1.6; rx: 10; }
+      .boxGreen { fill: #ecfdf5; stroke: #10b981; stroke-width: 1.6; rx: 10; }
+      .boxAmber { fill: #fffbeb; stroke: #f59e0b; stroke-width: 1.6; rx: 10; }
+      .boxPurple { fill: #f5f3ff; stroke: #8b5cf6; stroke-width: 1.6; rx: 10; }
+      .boxText { font: 700 13px Arial, sans-serif; fill: #0f172a; }
+      .boxSub { font: 400 12px Arial, sans-serif; fill: #334155; }
+      .arrow { stroke: #334155; stroke-width: 1.8; fill: none; marker-end: url(#arrowhead); }
+      .dashed { stroke-dasharray: 5 5; }
+      .cross { stroke: #64748b; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#334155" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="900"/>
+  <text class="title" x="36" y="48">Snowflake Intelligence Medicare Analyst - System Architecture</text>
+  <text class="subtitle" x="36" y="74">Demo flow from public data ingestion to governed analyst and agent outputs.</text>
+
+  <!-- Lanes -->
+  <rect class="lane" x="28" y="100" width="1344" height="118"/>
+  <text class="laneLabel" x="44" y="126">1) Source Inputs</text>
+
+  <rect class="lane" x="28" y="236" width="1344" height="148"/>
+  <text class="laneLabel" x="44" y="262">2) Data Foundation in Snowflake</text>
+
+  <rect class="lane" x="28" y="402" width="1344" height="150"/>
+  <text class="laneLabel" x="44" y="428">3) Intelligence Layer</text>
+
+  <rect class="lane" x="28" y="570" width="1344" height="184"/>
+  <text class="laneLabel" x="44" y="596">4) Trust, Governance, and Validation</text>
+
+  <!-- Source inputs -->
+  <rect class="box" x="80" y="140" width="240" height="58"/>
+  <text class="boxText" x="98" y="165">CMS DMEPOS API</text>
+  <text class="boxSub" x="98" y="185">claims + provider records</text>
+
+  <rect class="box" x="390" y="140" width="240" height="58"/>
+  <text class="boxText" x="408" y="165">FDA GUDID Release</text>
+  <text class="boxSub" x="408" y="185">device catalog text files</text>
+
+  <rect class="box" x="670" y="140" width="340" height="58"/>
+  <text class="boxText" x="688" y="165">Local Project Artifacts</text>
+  <text class="boxSub" x="688" y="185">sql/, models/, docs/, Makefile + Makefile.ps1</text>
+
+  <rect class="box" x="1060" y="140" width="240" height="58"/>
+  <text class="boxText" x="1078" y="165">CMS Policy PDFs</text>
+  <text class="boxSub" x="1078" y="185">chapter 20 and chapter 23</text>
+
+  <!-- Data foundation -->
+  <rect class="boxBlue" x="70" y="278" width="260" height="74"/>
+  <text class="boxText" x="88" y="305">RAW Schema</text>
+  <text class="boxSub" x="88" y="323">RAW_DMEPOS, RAW_GUDID_DEVICE</text>
+  <text class="boxSub" x="88" y="339">staged JSON/TXT inputs</text>
+
+  <rect class="boxBlue" x="380" y="278" width="260" height="74"/>
+  <text class="boxText" x="398" y="305">CURATED Schema</text>
+  <text class="boxSub" x="398" y="323">typed claim + device tables</text>
+  <text class="boxSub" x="398" y="339">cleaned joins and keys</text>
+
+  <rect class="boxBlue" x="690" y="278" width="300" height="74"/>
+  <text class="boxText" x="708" y="305">ANALYTICS Schema</text>
+  <text class="boxSub" x="708" y="323">DIM_PROVIDER, DIM_DEVICE</text>
+  <text class="boxSub" x="708" y="339">FACT_DMEPOS_CLAIMS</text>
+
+  <rect class="boxAmber" x="1040" y="278" width="280" height="74"/>
+  <text class="boxText" x="1058" y="305">SEARCH Schema</text>
+  <text class="boxSub" x="1058" y="323">HCPCS / DEVICE / PROVIDER / PDF</text>
+  <text class="boxSub" x="1058" y="339">Cortex Search services</text>
+
+  <!-- Intelligence -->
+  <rect class="boxGreen" x="70" y="444" width="260" height="76"/>
+  <text class="boxText" x="88" y="471">Semantic Model + View</text>
+  <text class="boxSub" x="88" y="489">DMEPOS_SEMANTIC_MODEL.yaml</text>
+  <text class="boxSub" x="88" y="505">DMEPOS_SEMANTIC_VIEW.sql</text>
+
+  <rect class="boxGreen" x="380" y="444" width="260" height="76"/>
+  <text class="boxText" x="398" y="471">Cortex Analyst</text>
+  <text class="boxSub" x="398" y="489">text-to-SQL over semantic view</text>
+  <text class="boxSub" x="398" y="505">metric + dimension answers</text>
+
+  <rect class="boxGreen" x="710" y="444" width="260" height="76"/>
+  <text class="boxText" x="728" y="471">Cortex Search</text>
+  <text class="boxSub" x="728" y="489">semantic retrieval over docs</text>
+  <text class="boxSub" x="728" y="505">ids and context grounding</text>
+
+  <rect class="boxPurple" x="1055" y="444" width="250" height="76"/>
+  <text class="boxText" x="1073" y="471">Cortex Agent</text>
+  <text class="boxSub" x="1073" y="489">routes Analyst + Search tools</text>
+  <text class="boxSub" x="1073" y="505">composed NL responses</text>
+
+  <!-- Governance -->
+  <rect class="boxPurple" x="55" y="622" width="290" height="92"/>
+  <text class="boxText" x="73" y="649">GOVERNANCE Schema</text>
+  <text class="boxSub" x="73" y="667">metadata + profiling results</text>
+  <text class="boxSub" x="73" y="683">sensitivity policy artifacts</text>
+  <text class="boxSub" x="73" y="699">human validation log support</text>
+
+  <rect class="boxPurple" x="350" y="622" width="320" height="92"/>
+  <text class="boxText" x="368" y="649">INTELLIGENCE Schema</text>
+  <text class="boxSub" x="368" y="667">ANALYST_EVAL_SET seeds</text>
+  <text class="boxSub" x="368" y="683">SEMANTIC_TEST_RESULTS</text>
+  <text class="boxSub" x="368" y="699">AI validation + feedback tables</text>
+
+  <rect class="boxPurple" x="710" y="622" width="260" height="92"/>
+  <text class="boxText" x="728" y="649">OBSERVABILITY Schema</text>
+  <text class="boxSub" x="728" y="667">AI event flattening views</text>
+  <text class="boxSub" x="728" y="683">query/task telemetry helpers</text>
+
+  <rect class="boxPurple" x="1065" y="622" width="230" height="92"/>
+  <text class="boxText" x="1083" y="649">Operational Runbook</text>
+  <text class="boxSub" x="1083" y="667">make demo / deploy-all</text>
+  <text class="boxSub" x="1083" y="683">sql checks + fail-fast tests</text>
+
+  <!-- High-level section flow only -->
+  <path class="arrow" d="M 700 218 L 700 236"/>
+  <path class="arrow" d="M 700 384 L 700 402"/>
+  <path class="arrow" d="M 700 552 L 700 570"/>
+
+  <text class="subtitle" x="36" y="820">Execution automation: Makefile (Unix/macOS) and Makefile.ps1 (Windows). Trust controls: tests, profiling, validation, observability.</text>
+</svg>

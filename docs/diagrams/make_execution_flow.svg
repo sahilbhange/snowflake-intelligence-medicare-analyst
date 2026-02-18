@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 340" role="img" aria-labelledby="title desc">
+  <title id="title">Make Execution Flow</title>
+  <desc id="desc">High-level make pipeline for demo deployment and validation.</desc>
+
+  <defs>
+    <style>
+      .bg { fill: #f7fafc; }
+      .title { font: 700 26px Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 14px Arial, sans-serif; fill: #334155; }
+      .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.6; rx: 10; }
+      .boxText { font: 700 13px Arial, sans-serif; fill: #0f172a; }
+      .arrow { stroke: #334155; stroke-width: 1.8; fill: none; marker-end: url(#arrowhead); }
+      .note { font: 400 13px Arial, sans-serif; fill: #334155; }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#334155" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="340"/>
+  <text class="title" x="24" y="38">Make Execution Flow</text>
+  <text class="subtitle" x="24" y="62">Pipeline used by demo/deploy runs (high-level target order).</text>
+
+  <!-- Row 1 -->
+  <rect class="box" x="40" y="90" width="120" height="44"/>
+  <text class="boxText" x="78" y="117">data</text>
+
+  <rect class="box" x="188" y="90" width="120" height="44"/>
+  <text class="boxText" x="225" y="117">setup</text>
+
+  <rect class="box" x="336" y="90" width="120" height="44"/>
+  <text class="boxText" x="376" y="117">load</text>
+
+  <rect class="box" x="484" y="90" width="140" height="44"/>
+  <text class="boxText" x="525" y="117">transform</text>
+
+  <rect class="box" x="652" y="90" width="120" height="44"/>
+  <text class="boxText" x="689" y="117">search</text>
+
+  <!-- Row 2 -->
+  <rect class="box" x="40" y="212" width="180" height="44"/>
+  <text class="boxText" x="78" y="239">governance-demo</text>
+
+  <rect class="box" x="248" y="212" width="160" height="44"/>
+  <text class="boxText" x="284" y="239">instrumentation</text>
+
+  <rect class="box" x="436" y="212" width="140" height="44"/>
+  <text class="boxText" x="473" y="239">validation</text>
+
+  <rect class="box" x="604" y="212" width="100" height="44"/>
+  <text class="boxText" x="639" y="239">test</text>
+
+  <rect class="box" x="732" y="212" width="110" height="44"/>
+  <text class="boxText" x="768" y="239">agent</text>
+
+  <!-- Arrows row 1 -->
+  <path class="arrow" d="M 160 112 L 188 112"/>
+  <path class="arrow" d="M 308 112 L 336 112"/>
+  <path class="arrow" d="M 456 112 L 484 112"/>
+  <path class="arrow" d="M 624 112 L 652 112"/>
+
+  <!-- Down from row 1 to row 2 -->
+  <path class="arrow" d="M 712 134 L 712 184 L 130 184 L 130 212"/>
+
+  <!-- Arrows row 2 -->
+  <path class="arrow" d="M 220 234 L 248 234"/>
+  <path class="arrow" d="M 408 234 L 436 234"/>
+  <path class="arrow" d="M 576 234 L 604 234"/>
+  <path class="arrow" d="M 704 234 L 732 234"/>
+
+  <text class="note" x="24" y="305">Use `make demo` for the core chain, then `make validation`, `make test`, and `make agent` when needed.</text>
+</svg>
