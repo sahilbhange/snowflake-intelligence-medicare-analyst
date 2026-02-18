@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+
+# Local config
+.env
+connections.toml
+
+# Python
+__pycache__/
+*.pyc
+
+# Snowflake project artifacts
+/backup/
+/data/*.json
+/data/*.zip
+/data/gudid_delimited/
+
+# Editor temp files
+.vscode/
+
+# Security / keys
+*.pem
+*.key
+*.p8
+
+# Local-only project folders
+.private/
+logs/
+*.log
