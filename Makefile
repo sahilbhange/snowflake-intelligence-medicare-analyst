@@ -4,7 +4,7 @@
 # - Supports log capture via `make deploy-all` or `make log TARGET=<target>`.
 #
 # Most used targets:
-# - `make demo`      : data + setup + load + transform + search + governance + observability
+# - `make demo`      : data + setup + load + transform + search + governance
 # - `make agent`     : semantic view + search services + Cortex Agent
 # - `make test`      : semantic regression checks
 # - `make help`      : quick command reference
@@ -209,9 +209,10 @@ clean-tests:
 # Orchestrated flows
 # ------------------------------
 # Run demo path end-to-end for learning workflow.
-demo: data setup load transform search governance-demo instrumentation validation observability grants
+demo: data setup load transform search governance-demo instrumentation validation grants
 	@echo "Demo deployment complete"
 	@echo "Next: make knowledge-graph, make agent, make test"
+	@echo "Optional trust layer: make observability-bootstrap (once) && make observability"
 
 # Run full deploy path including validation, tests, and agent.
 deploy: demo knowledge-graph test agent
@@ -267,6 +268,6 @@ help:
 	@echo "  make pdf-upload   Upload local pdf/cms_manuals/*.pdf to stage"
 	@echo "  make search-pdf   Recreate PDF search service only"
 	@echo "  make pdf-validate Validate PDF search"
-	@echo "  make deploy       Demo + observability + knowledge graph + tests + agent"
+	@echo "  make deploy       Demo + knowledge graph + tests + agent"
 	@echo "  make observability-bootstrap  One-time ACCOUNTADMIN observability grants"
 	@echo "  make observability            Build observability trust-layer objects"

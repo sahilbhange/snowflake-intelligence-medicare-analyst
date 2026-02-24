@@ -70,15 +70,15 @@ make search
 make governance-demo
 make instrumentation
 make validation
-make observability
 make grants
 make tests
 ```
 
-One-time environment bootstrap (admin role):
+Optional observability extension (one-time admin bootstrap):
 
 ```bash
 make observability-bootstrap
+make observability
 ```
 
 `make load` already runs `make stage-raw`. Use `make stage-raw` only when you want to re-upload files without loading.
@@ -97,12 +97,7 @@ If creating the Cortex Agent:
 make agent
 ```
 
-Trust-layer observability is part of the standard path:
-
-```bash
-make observability-bootstrap   # one-time admin bootstrap
-make observability
-```
+Trust-layer observability is optional in the run path.
 
 ## Medium Series
 

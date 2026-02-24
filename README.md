@@ -14,14 +14,22 @@ What you get:
 
 ## Quick Run
 
+Core run:
+
 ```bash
 make data
 make demo
-# optional: rerun semantic regression checks only
+```
+
+Optional rerun checks:
+
+```bash
 make test
 ```
 
 `make search` can take a few minutes while Cortex Search indexing/embeddings initialize.
+Optional trust layer add-on:
+run `make observability-bootstrap` once per environment, then `make observability`.
 
 ## Prerequisites
 
@@ -29,7 +37,6 @@ make test
 - Snowsight access.
 - Snowflake CLI installed (`snow --version`). Make targets use `snow sql`.
 - SnowSQL is optional for manual script execution.
-- One-time admin access to run `make observability-bootstrap` (or equivalent pre-granted observability permissions).
 
 ## One-time CLI Setup
 
@@ -123,7 +130,7 @@ Note: search service creation can take a few minutes while indexing initializes.
 make semantic-view
 ```
 
-9. Create observability trust-layer objects:
+9. (Optional) Create observability trust-layer objects:
 
 ```bash
 # one-time environment bootstrap (admin role)
@@ -140,8 +147,8 @@ make observability
 - UI guide: [`sql/agent/build_agent.md`](sql/agent/build_agent.md)
 - `make agent` now ensures semantic view + search services are created first.
 
-`make demo` and `make deploy` include observability object creation in the default flow.
-Run `make observability-bootstrap` once per environment before the first demo run.
+`make demo` and `make deploy` run without admin bootstrap.
+If you want observability trust-layer objects, run `make observability-bootstrap` once per environment and then `make observability`.
 
 Optional Snowsight UI path (not required for `make agent`):
 

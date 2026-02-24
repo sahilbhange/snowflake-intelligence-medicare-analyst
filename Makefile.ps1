@@ -214,10 +214,10 @@ function Invoke-Target {
             Invoke-Target "governance-demo"
             Invoke-Target "instrumentation"
             Invoke-Target "validation"
-            Invoke-Target "observability"
             Invoke-Target "grants"
             Write-Host "Demo deployment complete"
             Write-Host "Next: .\Makefile.ps1 knowledge-graph, .\Makefile.ps1 agent, .\Makefile.ps1 test"
+            Write-Host "Optional trust layer: .\Makefile.ps1 observability-bootstrap (once) then .\Makefile.ps1 observability"
         }
         "deploy" {
             # Run full deployment chain including validation/tests/agent.

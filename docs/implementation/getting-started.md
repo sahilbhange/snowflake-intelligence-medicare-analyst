@@ -8,7 +8,6 @@ Use this runbook to deploy the full demo in the correct order and verify each st
 - Snowflake CLI installed (`snow --version`).
 - Python 3.10+ and `make` installed.
 - Role with permission to create roles, warehouse, database, schemas, and search services.
-- One-time admin access (or pre-granted observability permissions) to run `make observability-bootstrap`.
 
 ## One-time Snow CLI Setup
 
@@ -34,18 +33,12 @@ make SNOW_OPTS="sql -c <connection_name>" demo
 ## Project Flow
 
 ```text
-data -> setup -> load -> transform -> search -> governance-demo -> instrumentation -> validation -> observability -> grants -> tests -> agent(optional)
+data -> setup -> load -> transform -> search -> governance-demo -> instrumentation -> validation -> grants -> tests -> agent(optional)
 ```
 
 ## Recommended Commands
 
 ### Option A: Full chain
-
-If this is a new environment, run one-time bootstrap first:
-
-```bash
-make observability-bootstrap
-```
 
 ```bash
 make demo
@@ -68,15 +61,15 @@ make search
 make governance-demo
 make instrumentation
 make validation
-make observability
 make grants
 make tests
 ```
 
-For a fresh environment, run this once before the sequence:
+### Option C: Optional observability extension (admin bootstrap once)
 
 ```bash
 make observability-bootstrap
+make observability
 ```
 
 ## Step Details
@@ -192,7 +185,7 @@ Verify:
 SELECT COUNT(*) FROM INTELLIGENCE.BUSINESS_QUESTIONS;
 ```
 
-### 9) Observability trust layer
+### 9) Optional observability trust layer
 
 ```bash
 # one-time bootstrap in a new environment
@@ -202,7 +195,7 @@ make observability-bootstrap
 make observability
 ```
 
-This is part of the standard trust-layer process. `make demo` runs `make observability` in the default path.
+This is optional. `make demo` does not run observability targets by default.
 
 ### 10) Apply grants
 
